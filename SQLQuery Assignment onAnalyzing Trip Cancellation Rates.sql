@@ -1,8 +1,8 @@
 ﻿---Create Users table
 CREATE TABLE Users (
     users_id INT PRIMARY KEY,
-    banned VARCHAR(3),       -- 'Yes' or 'No'
-    role VARCHAR(10)         -- 'client', 'driver', or 'partner');
+    banned VARCHAR(3),    
+    role VARCHAR(10)        
 
 -- Insert data into Users table
 INSERT INTO Users (users_id, banned, role) VALUES
@@ -19,26 +19,22 @@ CREATE TABLE Trips (
     client_id INT,
     driver_id INT,
     city_id INT,
-    status VARCHAR(30),       -- 'completed', 'cancelled_by_client', 'cancelled_by_driver'
-    request_at VARCHAR(10));    -- format: 'YYYY-MM-DD'
+    status VARCHAR(30),      
+    request_at VARCHAR(25));   
 
 
 -- Insert data into Trips table
 INSERT INTO Trips (id, client_id, driver_id, city_id, status, request_at) VALUES
--- 2013-10-01
-(1, 1, 2, 1, 'completed', '2013-10-01'),                   -- valid
-(2, 3, 2, 1, 'cancelled_by_client', '2013-10-01'),         -- banned client ❌
-(3, 1, 6, 1, 'cancelled_by_driver', '2013-10-01'),         -- banned driver ❌
-(4, 5, 4, 1, 'cancelled_by_client', '2013-10-01'),         -- valid
-(9, 5, 2, 1, 'completed', '2013-10-01'),                   -- valid
 
--- 2013-10-02
-(5, 1, 2, 1, 'completed', '2013-10-02'),                   -- valid
-(6, 5, 4, 1, 'completed', '2013-10-02'),                   -- valid
-
--- 2013-10-03
-(7, 5, 4, 1, 'cancelled_by_driver', '2013-10-03'),         -- valid
-(8, 1, 2, 1, 'completed', '2013-10-03');                   -- valid
+(1, 1, 2, 1, 'completed', '2013-10-01'),                 
+(2, 3, 2, 1, 'cancelled_by_client', '2013-10-01'),         
+(3, 1, 6, 1, 'cancelled_by_driver', '2013-10-01'),         
+(4, 5, 4, 1, 'cancelled_by_client', '2013-10-01'),       
+(9, 5, 2, 1, 'completed', '2013-10-01'),                
+(5, 1, 2, 1, 'completed', '2013-10-02'),                   
+(6, 5, 4, 1, 'completed', '2013-10-02'),                  
+(7, 5, 4, 1, 'cancelled_by_driver', '2013-10-03'),       
+(8, 1, 2, 1, 'completed', '2013-10-03');                  
 
 --  Calculate daily cancellation rate (2 decimal places)
 SELECT
